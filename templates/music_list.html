@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список музыки</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <form method="post">
+    {% for track in music %}
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="submit" value="{{track}}" name="track">
+                </div>
+                <div class="col-md-4">
+                    <input type="submit" value="{{track}}" name="track">
+                </div>
+                <div class="col-md-4">
+                    <input type="submit" value="{{track}}" name="track">
+                </div>
+            </div>
+    {% end %}
+    </form>
+</div>
+
+
+</body>
+</html>
