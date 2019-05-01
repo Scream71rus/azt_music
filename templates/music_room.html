@@ -7,7 +7,7 @@
 <body>
 <h1>music room</h1>
 
-<audio controls preload>
+<audio id="1" controls preload >
     <source src="data:audio/mp3;base64, {{ track_base64 }}" type="audio/mpeg">
 </audio>
 
@@ -15,20 +15,35 @@
 </html>
 
 <script>
-    var ws = null;
     function init() {
         if ("WebSocket" in window) {
-                {#            ("ws://localhost:8888/ws/")#}
-            ws = new WebSocket("ws://localhost:9091/ws/");
-            ws.onopen = function() {
+            var ws = new WebSocket("ws://localhost:9091/ws/");
+            ws.onopen = function () {
                 console.log("Connection is opened");
+                window.onload=function a (){
+                    ws.send('Go to start!')
+                };
             };
-            ws.onclose = function() {
+            ws.onclose = function () {
                 console.log("Connection is closed");
+            };
+            ws.onmessage = function (msg) {
+                var startTime = msg.data;
+                var date = new Date().getTime();
+
+                while (startTime != date){
+                    var date = new Date().getTime();
+                }
+                func();
             };
         } else {
             console.log('Your browser doenst support WebSocket!')
         }
     }
     init();
+
+    function func() {
+        var audio = document.getElementById(1);
+            audio.play();
+        }
 </script>
