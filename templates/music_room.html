@@ -30,11 +30,12 @@
             ws.onmessage = function (msg) {
                 var startTime = msg.data;
                 var date = new Date().getTime();
-
+                console.log(startTime);
                 while (startTime != date){
                     var date = new Date().getTime();
                 }
                 setTimeout(func);
+                console.log(1);
             };
         } else {
             console.log('Your browser doenst support WebSocket!')
