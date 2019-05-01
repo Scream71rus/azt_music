@@ -20,7 +20,7 @@ class WSMusicHandler(WebSocketHandler, BaseHandler):
             status_to_start.append(self)
             if len(ws_users) == len(status_to_start):
                 t = time.time()
-                start = int((t + 60) * 1000)
+                start = int((t + 30) * 1000)
                 self.write_message(str(start))
 
     def on_close(self):

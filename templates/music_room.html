@@ -34,7 +34,7 @@
                 while (startTime != date){
                     var date = new Date().getTime();
                 }
-                func();
+                setTimeout(func);
             };
         } else {
             console.log('Your browser doenst support WebSocket!')
