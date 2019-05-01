@@ -5,6 +5,30 @@
     <title>Title</title>
 </head>
 <body>
+<h1>music room</h1>
+
+<audio controls preload>
+    <source src="data:audio/mp3;base64, {{ track_base64 }}" type="audio/mpeg">
+</audio>
 
 </body>
 </html>
+
+<script>
+    var ws = null;
+    function init() {
+        if ("WebSocket" in window) {
+                {#            ("ws://localhost:8888/ws/")#}
+            ws = new WebSocket("ws://localhost:9091/ws/");
+            ws.onopen = function() {
+                console.log("Connection is opened");
+            };
+            ws.onclose = function() {
+                console.log("Connection is closed");
+            };
+        } else {
+            console.log('Your browser doenst support WebSocket!')
+        }
+    }
+    init();
+</script>

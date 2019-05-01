@@ -1,11 +1,9 @@
 
-import psycopg2.extras
 import momoko
+import psycopg2.extras
+import tornado.ioloop
 import tornado.web
-
-from tornado.ioloop import IOLoop
-
-from config import host, port, database, user, password
+from tornado.options import options
 
 
 class Application(tornado.web.Application):
@@ -14,11 +12,10 @@ class Application(tornado.web.Application):
         super(Application, self).__init__(*args, **kwargs)
 
         self._db = momoko.Pool(
-            dsn="host={} port={} database={} user={} password={}".format(host, port, database, user, password),
-            size=2,
-            ioloop=IOLoop.current(),
-            cursor_factory=psycopg2.extras.DictCursor
-        )
+            dsn=options.dsn,
+            size=options.size_db_connection_pool,
+            ioloop=tornado.ioloop.IOLoop.current(),
+            cursor_factory=psycopg2.extras.DictCursor)
 
         self._db.connect()
 

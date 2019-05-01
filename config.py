@@ -1,5 +1,0 @@
-host = 'localhost',
-port = '5432',
-database = 'azt',
-user = 'admin',
-password = 'admin',

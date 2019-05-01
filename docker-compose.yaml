@@ -1,0 +1,25 @@
+db:
+  image: postgres
+  restart: always
+  environment:
+    POSTGRES_USER: azt
+    POSTGRES_PASSWORD: azt
+    POSTGRES_DB: azt
+
+cache:
+  image: redis
+  restart: always
+
+azt:
+  build: .
+  dockerfile: Dockerfile
+  links:
+    - db
+    - cache
+  ports:
+    - "9091:9091"
+  environment:
+    PORT: 9091
+    DB_HOST: db
+    CACHE_HOST: cache
+    PGPASSWORD: azt
