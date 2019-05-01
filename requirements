@@ -2,3 +2,4 @@ tornado
 psycopg2-binary
 Momoko
 redis
+pbkdf2
